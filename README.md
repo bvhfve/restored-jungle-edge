@@ -3,7 +3,7 @@
 [![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.4-brightgreen.svg)](https://minecraft.net/)
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.5+-blue.svg)](https://fabricmc.net/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.1-orange.svg)](https://github.com/bvhfve/restored-jungle-edge/releases)
+[![Version](https://img.shields.io/badge/Version-1.0.4-orange.svg)](https://github.com/bvhfve/restored-jungle-edge/releases)
 
 **Restore the beloved Modified Jungle Edge biome that was removed from Minecraft!**
 
