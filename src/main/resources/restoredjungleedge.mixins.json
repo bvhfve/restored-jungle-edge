@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.bvhfve.restoredjungleedge.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "restoredjungleedge.refmap.json",
+  "mixins": [
+    "MultiNoiseBiomeSourceMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "restoredjungleedge",
+  "version": "${version}",
+  "name": "Restored Jungle Edge",
+  "description": "Restores the removed Modified Jungle Edge biome to Minecraft",
+  "authors": [
+    "bvhfve"
+  ],
+  "contact": {
+    "homepage": "https://github.com/bvhfve/restored-jungle-edge",
+    "sources": "https://github.com/bvhfve/restored-jungle-edge"
+  },
+  "license": "MIT",
+  "icon": "assets/restoredjungleedge/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.bvhfve.restoredjungleedge.RestoredJungleEdge"
+    ]
+  },
+  "mixins": [
+    "restoredjungleedge.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.5",
+    "fabric-api": "*",
+    "minecraft": "~1.21.4",
+    "java": ">=21"
+  },
+  "suggests": {
+    "modmenu": ">=7.0.0"
+  }
+}
