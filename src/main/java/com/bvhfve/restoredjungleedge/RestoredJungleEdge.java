@@ -1,5 +1,6 @@
 package com.bvhfve.restoredjungleedge;
 
+import com.bvhfve.restoredjungleedge.config.ConfigManager;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -21,8 +22,18 @@ public class RestoredJungleEdge implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("Restoring the Modified Jungle Edge biome!");
         
-        // Initialize configuration (commented out for now to avoid dependency issues)
-        // ConfigManager.initialize();
+        // Initialize configuration
+        try {
+            ConfigManager.initialize();
+            LOGGER.info("Configuration system initialized successfully");
+            
+            // Log configuration for debugging
+            if (LOGGER.isDebugEnabled()) {
+                com.bvhfve.restoredjungleedge.config.ConfigHelper.logConfiguration();
+            }
+        } catch (Exception e) {
+            LOGGER.warn("Failed to initialize configuration system: {}", e.getMessage());
+        }
         
         // Register the biome
         ModBiomes.registerBiomes();

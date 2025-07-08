@@ -7,6 +7,7 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -22,16 +23,43 @@ public class ModBiomes {
         // Biome registration is handled through datagen
     }
     
-    public static Biome createModifiedJungleEdge(Registerable<Biome> context) {
-        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+    public static Biome createModifiedJungleEdge(RegistryWrapper.WrapperLookup registries) {
+        long startTime = com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logBiomeGenerationStart(RestoredJungleEdge.MODIFIED_JUNGLE_EDGE);
+        com.bvhfve.restoredjungleedge.debug.PerformanceProfiler.startTiming("BiomeCreation");
         
-        // Add typical jungle edge spawns but with reduced rates (modified characteristic)
+        try {
+            SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+        
+        // Add typical jungle edge spawns but with configurable rates
         spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.CHICKEN, 10, 4, 4));
         spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.PIG, 10, 4, 4));
         spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.COW, 8, 4, 4));
         spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 12, 4, 4));
-        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.OCELOT, 2, 1, 3));
-        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.PARROT, 40, 1, 2));
+        
+        // Use configuration for ocelot and parrot spawning
+        try {
+            int ocelotWeight = com.bvhfve.restoredjungleedge.config.ConfigHelper.getOcelotSpawnWeight();
+            int parrotWeight = com.bvhfve.restoredjungleedge.config.ConfigHelper.getParrotSpawnWeight();
+            
+            com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logConfigurationUsage("ocelotSpawnWeight", ocelotWeight);
+            com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logConfigurationUsage("parrotSpawnWeight", parrotWeight);
+            
+            if (ocelotWeight > 0) {
+                spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.OCELOT, ocelotWeight, 1, 3));
+                com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logMobSpawnConfig("OCELOT", ocelotWeight, 1, 3);
+            }
+            if (parrotWeight > 0) {
+                spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.PARROT, parrotWeight, 1, 2));
+                com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logMobSpawnConfig("PARROT", parrotWeight, 1, 2);
+            }
+        } catch (Exception e) {
+            // Fallback to default values if config is not available
+            RestoredJungleEdge.LOGGER.warn("Failed to load mob spawn config, using defaults: {}", e.getMessage());
+            spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.OCELOT, 2, 1, 3));
+            spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.PARROT, 40, 1, 2));
+            com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logMobSpawnConfig("OCELOT", 2, 1, 3);
+            com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logMobSpawnConfig("PARROT", 40, 1, 2);
+        }
         
         // Hostile mobs
         spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SPIDER, 100, 4, 4));
@@ -46,19 +74,22 @@ public class ModBiomes {
         // Ambient
         spawnBuilder.spawn(SpawnGroup.AMBIENT, new SpawnSettings.SpawnEntry(EntityType.BAT, 10, 8, 8));
         
-        GenerationSettings.LookupBackedBuilder generationBuilder = new GenerationSettings.LookupBackedBuilder(
-            context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
-            context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER)
-        );
+        // Simplified generation settings without complex registry lookups
+        GenerationSettings.Builder generationBuilder = new GenerationSettings.Builder();
         
         // Add basic world generation features
         ModBiomeFeatures.addBasicFeatures(generationBuilder);
         ModBiomeFeatures.addModifiedJungleEdgeFeatures(generationBuilder);
         
-        return new Biome.Builder()
+        // Log biome characteristics
+        float temperature = 0.95f;
+        float downfall = 0.8f;
+        com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logBiomeCharacteristics(RestoredJungleEdge.MODIFIED_JUNGLE_EDGE, temperature, downfall);
+        
+        Biome biome = new Biome.Builder()
             .precipitation(true)
-            .downfall(0.8f)
-            .temperature(0.95f)
+            .downfall(downfall)
+            .temperature(temperature)
             .generationSettings(generationBuilder.build())
             .spawnSettings(spawnBuilder.build())
             .effects(new BiomeEffects.Builder()
@@ -71,6 +102,17 @@ public class ModBiomes {
                 .moodSound(BiomeMoodSound.CAVE)
                 .build())
             .build();
+            
+        com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logBiomeGenerationSuccess(RestoredJungleEdge.MODIFIED_JUNGLE_EDGE, startTime);
+        com.bvhfve.restoredjungleedge.debug.PerformanceProfiler.endTiming("BiomeCreation");
+        
+        return biome;
+        
+        } catch (Exception e) {
+            com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logBiomeGenerationError(RestoredJungleEdge.MODIFIED_JUNGLE_EDGE, e, startTime);
+            com.bvhfve.restoredjungleedge.debug.PerformanceProfiler.endTiming("BiomeCreation");
+            throw e;
+        }
     }
     
     public static MultiNoiseUtil.NoiseHypercube getModifiedJungleEdgeNoisePoint() {

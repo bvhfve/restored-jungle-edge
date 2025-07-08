@@ -19,9 +19,8 @@ public class ModBiomeProvider extends FabricDynamicRegistryProvider {
     
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-        // Temporarily comment out biome registration to fix compilation
-        // entries.add(RestoredJungleEdge.MODIFIED_JUNGLE_EDGE, 
-        //     ModBiomes.createModifiedJungleEdge(context));
+        entries.add(RestoredJungleEdge.MODIFIED_JUNGLE_EDGE, 
+            ModBiomes.createModifiedJungleEdge(registries));
     }
     
     @Override

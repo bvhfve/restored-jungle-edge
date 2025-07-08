@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "restoredjungleedge",
-  "version": "${version}",
+  "version": "1.0.4",
   "name": "Restored Jungle Edge",
   "description": "Restores the removed Modified Jungle Edge biome to Minecraft",
   "authors": [
@@ -16,7 +16,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.bvhfve.restoredjungleedge.RestoredJungleEdge"
+      "com.bvhfve.restoredjungleedge.RestoredJungleEdgeClean"
+    ],
+    "modmenu": [
+      "com.bvhfve.restoredjungleedge.client.ModMenuIntegration"
+    ],
+    "fabric-datagen": [
+      "com.bvhfve.restoredjungleedge.datagen.ModDataGeneration"
     ]
   },
   "mixins": [
@@ -24,11 +30,12 @@
   ],
   "depends": {
     "fabricloader": ">=0.16.5",
-    "fabric-api": "*",
+    "fabric-api": ">=0.119.2",
     "minecraft": "~1.21.4",
     "java": ">=21"
   },
   "suggests": {
-    "modmenu": ">=7.0.0"
+    "modmenu": ">=13.0.0",
+	"cloth-config": ">=17.0.144"
   }
 }

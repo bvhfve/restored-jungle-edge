@@ -2,13 +2,14 @@ plugins {
 	id 'fabric-loom' version '1.10-SNAPSHOT'
 }
 
-version = "1.0.0"
+version = "1.0.4"
 group = "com.bvhfve"
 
 repositories {
     mavenCentral()
-    maven { url "https://maven.fabricmc.net/" }
-	maven { url "https://maven.shedaniel.me/" }
+    maven { url = "https://maven.fabricmc.net/" }
+	maven { url = "https://maven.shedaniel.me/" }
+	maven { url = "https://maven.terraformersmc.com/" }
 }
 
 dependencies {
@@ -16,10 +17,9 @@ dependencies {
     mappings("net.fabricmc:yarn:1.21.4+build.8") // Dùng Yarn mappings thay vì Mojang mappings
     modImplementation("net.fabricmc:fabric-loader:0.16.5") // Cập nhật phiên bản Fabric Loader
     modImplementation("net.fabricmc.fabric-api:fabric-api:0.119.2+1.21.4")
-	// Config
-	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-    	exclude(group: "net.fabricmc.fabric-api")
-  	}
+	// Config - using simple in-memory configuration
+	// Add Mod Menu dependency (optional)
+    modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
 }
 
 processResources {

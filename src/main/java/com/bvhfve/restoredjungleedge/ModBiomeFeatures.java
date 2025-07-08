@@ -4,7 +4,7 @@ import net.minecraft.world.biome.GenerationSettings;
 
 public class ModBiomeFeatures {
     
-    public static void addBasicFeatures(GenerationSettings.LookupBackedBuilder builder) {
+    public static void addBasicFeatures(GenerationSettings.Builder builder) {
         // Add basic world generation features that all biomes need
         // This would typically include things like:
         // - Underground ores
@@ -16,7 +16,7 @@ public class ModBiomeFeatures {
         // For now, we'll rely on the default generation settings
     }
     
-    public static void addModifiedJungleEdgeFeatures(GenerationSettings.LookupBackedBuilder builder) {
+    public static void addModifiedJungleEdgeFeatures(GenerationSettings.Builder builder) {
         // Add features specific to the modified jungle edge biome
         // This should include:
         // - Sparse jungle trees (fewer than regular jungle)

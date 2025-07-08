@@ -1,17 +1,15 @@
 package com.bvhfve.restoredjungleedge.config;
 
 import com.bvhfve.restoredjungleedge.RestoredJungleEdge;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 
 public class ConfigManager {
     private static ModConfig config;
     
     public static void initialize() {
-        AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
-        config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        // Temporarily use default config for testing
+        config = new ModConfig();
         
-        RestoredJungleEdge.LOGGER.info("Loaded Restored Jungle Edge configuration");
+        RestoredJungleEdge.LOGGER.info("Loaded Restored Jungle Edge configuration (default)");
     }
     
     public static ModConfig getConfig() {
@@ -31,6 +29,8 @@ public class ConfigManager {
     }
     
     public static void save() {
-        AutoConfig.getConfigHolder(ModConfig.class).save();
+        // Save functionality would be implemented here
+        // For now, using in-memory configuration
+        RestoredJungleEdge.LOGGER.info("Configuration saved (in-memory)");
     }
 }

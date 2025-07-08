@@ -1,24 +1,16 @@
 package com.bvhfve.restoredjungleedge.client;
 
 import com.bvhfve.restoredjungleedge.config.ModConfig;
-import me.shedaniel.autoconfig.AutoConfig;
+import com.terraformersmc.modmenu.api.ConfigScreenFactory;
+import com.terraformersmc.modmenu.api.ModMenuApi;
 
-// Note: ModMenu integration is optional - these imports will only work if ModMenu is present
-// import com.terraformersmc.modmenu.api.ConfigScreenFactory;
-// import com.terraformersmc.modmenu.api.ModMenuApi;
-
-// ModMenu integration - only active when ModMenu is present
-public class ModMenuIntegration {
+// ModMenu integration - provides configuration screen in ModMenu
+public class ModMenuIntegration implements ModMenuApi {
     
-    // This will be loaded via reflection when ModMenu is available
-    public static Object getModConfigScreenFactory() {
-        try {
-            // Use reflection to avoid hard dependency on ModMenu
-            Class<?> configScreenFactoryClass = Class.forName("com.terraformersmc.modmenu.api.ConfigScreenFactory");
-            // Return null for now to avoid compilation issues
-            return null;
-        } catch (ClassNotFoundException e) {
-            return null; // ModMenu not present
-        }
+    @Override
+    public ConfigScreenFactory<?> getModConfigScreenFactory() {
+        // AutoConfig removed - return null for now
+        // TODO: Implement custom config screen or use alternative
+        return screen -> null;
     }
 }
