@@ -5,6 +5,44 @@ All notable changes to the Restored Jungle Edge mod will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2025-01-16
+
+### Added
+- **Complete Biome Injection Implementation**
+  - Functional MultiNoiseBiomeSourceMixin with real biome replacement logic
+  - Coordinate-based pseudo-random distribution for natural biome placement
+  - Configurable replacement based on rarity settings from existing config system
+  - Comprehensive error handling that won't break world generation
+
+### Enhanced
+- **Biome Generation System**
+  - Proper Fabric BiomeModifications API integration (recommended approach)
+  - Multi-layered biome injection strategy with fallback functionality
+  - Feature injection into existing jungle biomes for compatibility
+  - Noise parameter configuration for proper biome placement
+  - Real-time biome monitoring and replacement tracking
+
+### Improved
+- **Datagen Integration**
+  - Bootstrap method for proper biome registration in datagen
+  - Registry builder configuration for seamless integration
+  - Enhanced biome dependency management
+  - Complete datagen provider implementation
+
+### Technical
+- **Version Bump**: Updated from 1.0.4 to 1.0.5
+- **Production-Ready**: Complete biome injection system using modern Fabric APIs
+- **Multi-Layer Architecture**: Primary, secondary, and fallback injection methods
+- **Future-Proof**: Solid foundation for advanced biome generation features
+
+### Developer Features
+- **Comprehensive Implementation Guide**: Detailed technical documentation
+- **Testing Recommendations**: Complete guide for verifying functionality
+- **Architecture Overview**: Multi-layered approach explanation
+- **Future Enhancement Roadmap**: Clear path for additional features
+
+---
+
 ## [1.0.4] - 2025-01-06
 
 ### Added

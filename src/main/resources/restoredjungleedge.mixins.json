@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "restoredjungleedge.refmap.json",
   "mixins": [
-    "MultiNoiseBiomeSourceMixin"
   ],
   "client": [
   ],

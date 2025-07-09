@@ -3,7 +3,7 @@
 [![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.4-brightgreen.svg)](https://minecraft.net/)
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.5+-blue.svg)](https://fabricmc.net/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.4-orange.svg)](https://github.com/bvhfve/restored-jungle-edge/releases)
+[![Version](https://img.shields.io/badge/Version-1.0.5-orange.svg)](https://github.com/bvhfve/restored-jungle-edge/releases)
 
 **Restore the beloved Modified Jungle Edge biome that was removed from Minecraft!**
 
@@ -277,8 +277,30 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
+## 📞 Support & Links
+
+### Get Help
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/bvhfve/restored-jungle-edge/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/bvhfve/restored-jungle-edge/discussions)
+- 📖 **Documentation**: [Configuration Guide](CONFIGURATION.md)
+
 ### Download Links
-coming sooon (github only for now)
+- 📦 **Modrinth**: [Restored Jungle Edge](https://modrinth.com/mod/restored-jungle-edge)
+- 📦 **CurseForge**: [Restored Jungle Edge](https://curseforge.com/minecraft/mc-mods/restored-jungle-edge)
+- 📦 **GitHub Releases**: [Latest Release](https://github.com/bvhfve/restored-jungle-edge/releases/latest)
+
+### Social
+- 🐦 **Twitter**: [@bvhfve](https://twitter.com/bvhfve)
+- 💬 **Discord**: Join our [Discord Server](https://discord.gg/restored-jungle-edge)
+
+---
+
+## 📊 Statistics
+
+- **Downloads**: ![Downloads](https://img.shields.io/github/downloads/bvhfve/restored-jungle-edge/total)
+- **Stars**: ![Stars](https://img.shields.io/github/stars/bvhfve/restored-jungle-edge)
+- **Issues**: ![Issues](https://img.shields.io/github/issues/bvhfve/restored-jungle-edge)
+- **Last Updated**: ![Last Commit](https://img.shields.io/github/last-commit/bvhfve/restored-jungle-edge)
 
 ---
 

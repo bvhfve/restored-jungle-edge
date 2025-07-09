@@ -66,7 +66,7 @@ public class RestoredJungleEdgeClean implements ModInitializer {
     private void logModInfo() {
         LOGGER.info("Mod Information:");
         LOGGER.info("  ID: {}", MOD_ID);
-        LOGGER.info("  Version: 1.0.4");
+        LOGGER.info("  Version: 1.0.5");
         LOGGER.info("  Target Biome: Modified Jungle Edge");
         LOGGER.info("  Biome Registry Key: {}", MODIFIED_JUNGLE_EDGE.getValue());
         LOGGER.info("  Description: Restores the removed Modified Jungle Edge biome");

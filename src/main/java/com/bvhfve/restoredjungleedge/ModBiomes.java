@@ -21,6 +21,102 @@ public class ModBiomes {
     
     public static void registerBiomes() {
         // Biome registration is handled through datagen
+        RestoredJungleEdgeClean.LOGGER.info("Biome registration will be handled through datagen");
+    }
+    
+    /**
+     * Bootstrap method for datagen biome registration
+     * NOTE: Currently disabled - using Fabric BiomeModifications API instead
+     */
+    public static void bootstrap(net.minecraft.registry.Registerable<Biome> biomeRegisterable) {
+        RestoredJungleEdgeClean.LOGGER.info("Biome registration through datagen disabled - using Fabric API approach");
+        
+        // No longer registering biomes through datagen to avoid JSON parsing issues
+        // The mod functionality is provided through Fabric BiomeModifications API
+        // This approach is more reliable and compatible with other mods
+    }
+    
+    /**
+     * Creates a simple version of Modified Jungle Edge biome for compilation
+     */
+    public static Biome createSimpleModifiedJungleEdge() {
+        long startTime = com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logBiomeGenerationStart(RestoredJungleEdgeClean.MODIFIED_JUNGLE_EDGE);
+        com.bvhfve.restoredjungleedge.debug.PerformanceProfiler.startTiming("BiomeCreation");
+        
+        try {
+            SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+        
+            // Add typical jungle edge spawns but with configurable rates
+            spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.CHICKEN, 10, 4, 4));
+            spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.PIG, 10, 4, 4));
+            spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.COW, 8, 4, 4));
+            spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.SHEEP, 12, 4, 4));
+            
+            // Use configuration for ocelot and parrot spawning
+            try {
+                int ocelotWeight = com.bvhfve.restoredjungleedge.config.ConfigHelper.getOcelotSpawnWeight();
+                int parrotWeight = com.bvhfve.restoredjungleedge.config.ConfigHelper.getParrotSpawnWeight();
+                
+                if (ocelotWeight > 0) {
+                    spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.OCELOT, ocelotWeight, 1, 3));
+                }
+                if (parrotWeight > 0) {
+                    spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.PARROT, parrotWeight, 1, 2));
+                }
+            } catch (Exception e) {
+                // Fallback to default values if config is not available
+                spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.OCELOT, 2, 1, 3));
+                spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.PARROT, 40, 1, 2));
+            }
+            
+            // Hostile mobs
+            spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SPIDER, 100, 4, 4));
+            spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 95, 4, 4));
+            spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
+            spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SKELETON, 100, 4, 4));
+            spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.CREEPER, 100, 4, 4));
+            spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SLIME, 100, 4, 4));
+            spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMAN, 10, 1, 4));
+            spawnBuilder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.WITCH, 5, 1, 1));
+            
+            // Ambient
+            spawnBuilder.spawn(SpawnGroup.AMBIENT, new SpawnSettings.SpawnEntry(EntityType.BAT, 10, 8, 8));
+            
+            // Simple generation settings
+            GenerationSettings.Builder generationBuilder = new GenerationSettings.Builder();
+            
+            // Log biome characteristics
+            float temperature = 0.95f;
+            float downfall = 0.8f;
+            com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logBiomeCharacteristics(RestoredJungleEdgeClean.MODIFIED_JUNGLE_EDGE, temperature, downfall);
+            
+            Biome biome = new Biome.Builder()
+                .precipitation(true)
+                .downfall(downfall)
+                .temperature(temperature)
+                .generationSettings(generationBuilder.build())
+                .spawnSettings(spawnBuilder.build())
+                .effects(new BiomeEffects.Builder()
+                    .waterColor(0x3F76E4)
+                    .waterFogColor(0x050533)
+                    .skyColor(0x77ADFF)
+                    .grassColor(0x59C93C)
+                    .foliageColor(0x30BB0B)
+                    .fogColor(0xC0D8FF)
+                    .moodSound(BiomeMoodSound.CAVE)
+                    .build())
+                .build();
+                
+            com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logBiomeGenerationSuccess(RestoredJungleEdgeClean.MODIFIED_JUNGLE_EDGE, startTime);
+            com.bvhfve.restoredjungleedge.debug.PerformanceProfiler.endTiming("BiomeCreation");
+            
+            return biome;
+            
+        } catch (Exception e) {
+            com.bvhfve.restoredjungleedge.debug.BiomeDebugLogger.logBiomeGenerationError(RestoredJungleEdgeClean.MODIFIED_JUNGLE_EDGE, e, startTime);
+            com.bvhfve.restoredjungleedge.debug.PerformanceProfiler.endTiming("BiomeCreation");
+            throw e;
+        }
     }
     
     public static Biome createModifiedJungleEdge(RegistryWrapper.WrapperLookup registries) {
