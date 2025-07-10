@@ -23,9 +23,14 @@ public class ModDataGeneration implements DataGeneratorEntrypoint {
     
     @Override
     public void buildRegistry(RegistryBuilder registryBuilder) {
-        // Biome registration disabled - using Fabric BiomeModifications API instead
-        // This prevents JSON parsing issues while maintaining full functionality
-        
-        RestoredJungleEdgeClean.LOGGER.debug("Registry builder configured - using API-based biome modifications");
+        // Re-enabling biome registration with minimal, safe JSON structure
+        // Using simplified approach to minimize crash risks
+        try {
+            registryBuilder.addRegistry(RegistryKeys.BIOME, ModBiomes::bootstrap);
+            RestoredJungleEdgeClean.LOGGER.info("Registry builder configured for safe biome registration");
+        } catch (Exception e) {
+            RestoredJungleEdgeClean.LOGGER.error("Failed to configure registry builder: {}", e.getMessage());
+            // Continue without registry registration if it fails
+        }
     }
 }

@@ -20,6 +20,8 @@ public class ModBiomeGeneration {
             // This approach uses Fabric's biome API to inject our biome into the world generation
             addModifiedJungleEdgeToOverworld();
             
+            // TerraBlender integration handles biome injection now
+            
             // Optionally modify existing jungle edge biomes
             modifyExistingJungleEdgeBiomes();
             

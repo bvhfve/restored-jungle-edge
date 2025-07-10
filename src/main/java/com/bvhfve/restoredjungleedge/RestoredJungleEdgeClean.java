@@ -9,28 +9,36 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Clean version of Restored Jungle Edge mod without problematic dependencies
+ * Clean version of Restored Jungle Edge mod with multi-layer biome registration
+ * TerraBlender integration handled by dedicated TerraBlenderIntegration class
  */
 public class RestoredJungleEdgeClean implements ModInitializer {
     public static final String MOD_ID = "restoredjungleedge";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    public static final RegistryKey<Biome> MODIFIED_JUNGLE_EDGE = RegistryKey.of(
-        RegistryKeys.BIOME, 
-        Identifier.of(MOD_ID, "modified_jungle_edge")
-    );
+    // Use the professional biome registry (will be initialized after ModBiomes.setup())
+    public static RegistryKey<Biome> MODIFIED_JUNGLE_EDGE;
 
     @Override
     public void onInitialize() {
-        LOGGER.info("🌿 Restored Jungle Edge - Clean Version Loading...");
+        LOGGER.info("Restored Jungle Edge v1.0.7 - Multi-Layer Biome Registration Loading...");
+        
+        // Initialize professional biome registry
+        com.bvhfve.restoredjungleedge.api.ModBiomes.setup();
+        
+        // Initialize the main biome reference
+        MODIFIED_JUNGLE_EDGE = com.bvhfve.restoredjungleedge.api.ModBiomes.MODIFIED_JUNGLE_EDGE;
         
         // Initialize simple configuration
         initializeConfiguration();
         
+        // Initialize fallback biome registration system
+        initializeFallbackBiomeRegistration();
+        
         // Log mod information
         logModInfo();
         
-        LOGGER.info("✅ Restored Jungle Edge mod loaded successfully!");
+        LOGGER.info("Restored Jungle Edge mod loaded successfully!");
     }
     
     private void initializeConfiguration() {
@@ -66,13 +74,65 @@ public class RestoredJungleEdgeClean implements ModInitializer {
     private void logModInfo() {
         LOGGER.info("Mod Information:");
         LOGGER.info("  ID: {}", MOD_ID);
-        LOGGER.info("  Version: 1.0.5");
+        LOGGER.info("  Version: 1.0.7");
         LOGGER.info("  Target Biome: Modified Jungle Edge");
         LOGGER.info("  Biome Registry Key: {}", MODIFIED_JUNGLE_EDGE.getValue());
         LOGGER.info("  Description: Restores the removed Modified Jungle Edge biome");
+        LOGGER.info("  Registration Strategy: Multi-layer (TerraBlender -> Datagen -> BiomeModifications)");
+        LOGGER.info("  TerraBlender Integration: Handled by dedicated TerraBlenderIntegration class");
         LOGGER.info("  Debug Features: Enabled");
+        
+        // Test and log configuration system
+        try {
+            com.bvhfve.restoredjungleedge.config.ConfigHelper.logConfiguration();
+        } catch (Exception e) {
+            LOGGER.error("Failed to log configuration: {}", e.getMessage(), e);
+        }
         
         // Log performance statistics after initialization
         com.bvhfve.restoredjungleedge.debug.PerformanceProfiler.logStatistics();
+    }
+    
+    /**
+     * Initialize the fallback biome registration system
+     * TerraBlender registration is handled separately via TerraBlenderIntegration class
+     */
+    private void initializeFallbackBiomeRegistration() {
+        LOGGER.info("Initializing fallback biome registration system...");
+        
+        // Note: TerraBlender (Primary) is handled by dedicated TerraBlenderIntegration class
+        // Skip TerraBlender availability check during main initialization to avoid conflicts
+        LOGGER.info("  TerraBlender integration will be handled by dedicated TerraBlenderIntegration class");
+        
+        // Layer 2: Datagen (Fallback) - Always attempt
+        try {
+            ModBiomes.registerBiomes();
+            LOGGER.info("  Datagen registration initialized");
+        } catch (Exception e) {
+            LOGGER.warn("  Datagen registration failed: {}", e.getMessage());
+        }
+        
+        // Layer 3: BiomeModifications API (Backup) - Always works
+        try {
+            ModBiomeGeneration.registerBiomeGeneration();
+            LOGGER.info("  BiomeModifications API registered (backup always available)");
+        } catch (Exception e) {
+            LOGGER.error("  BiomeModifications API failed: {}", e.getMessage(), e);
+        }
+        
+        LOGGER.info("Fallback biome registration system initialized");
+    }
+    
+    /**
+     * Check if TerraBlender is available (safe method that doesn't trigger class initialization)
+     */
+    private boolean isTerraBlenderAvailable() {
+        try {
+            // Only check if classes exist without initializing them
+            Class.forName("terrablender.api.TerraBlenderApi", false, this.getClass().getClassLoader());
+            return true;
+        } catch (ClassNotFoundException | NoClassDefFoundError | ExceptionInInitializerError e) {
+            return false;
+        }
     }
 }

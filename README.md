@@ -1,13 +1,14 @@
 # 🌿 Restored Jungle Edge
 
 [![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.4-brightgreen.svg)](https://minecraft.net/)
-[![Fabric](https://img.shields.io/badge/Fabric-0.16.5+-blue.svg)](https://fabricmc.net/)
+[![Fabric](https://img.shields.io/badge/Fabric-0.16.9+-blue.svg)](https://fabricmc.net/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.5-orange.svg)](https://github.com/bvhfve/restored-jungle-edge/releases)
+[![Version](https://img.shields.io/badge/Version-1.0.7-orange.svg)](https://github.com/bvhfve/restored-jungle-edge/releases)
+[![TerraBlender](https://img.shields.io/badge/TerraBlender-4.1.0+-green.svg)](https://github.com/Glitchfiend/TerraBlender)
 
-**Restore the beloved Modified Jungle Edge biome that was removed from Minecraft!**
+**Restore the beloved Modified Jungle Edge biome with professional-grade TerraBlender integration!**
 
-The Modified Jungle Edge was a rare and beautiful biome variant that provided a unique transition between jungle and other biomes. This mod brings it back with full customization options and modern Minecraft compatibility.
+The Modified Jungle Edge was a rare and beautiful biome variant that provided a unique transition between jungle and other biomes. This mod brings it back with **industry-standard TerraBlender integration**, **multi-layer safety systems**, and **locatable biome support** using the `/locate biome` command!
 
 ---
 
@@ -24,6 +25,30 @@ The **Restored Jungle Edge** mod recreates the iconic **Modified Jungle Edge** b
 ---
 
 ## ✨ Features
+
+### 🌍 **Professional TerraBlender Integration (v1.0.7)**
+- **BiomesOPlenty-Inspired Architecture**: Following industry-standard patterns from major biome mods
+- **Professional Biome Placement**: Advanced climate-based generation with sophisticated parameters
+- **Multiple Locatable Biomes**: Three distinct biome variants with unique characteristics
+- **Smart Weight System**: Intelligent rarity distribution across biome variants
+
+### 🎯 **Three Professional Biome Variants**
+- **Modified Jungle Edge**: Primary sparse jungle transition biome
+- **Modified Jungle Edge Hills**: Elevated terrain variant with hillier generation
+- **Modified Jungle Edge Plateau**: Rare flat elevated areas with unique features
+- **Intelligent Rarity**: Hills (50% rarity), Plateau (33% rarity) of primary biome
+
+### 🛡️ **Multi-Layer Safety System**
+- **Primary**: Advanced TerraBlender integration with professional biome builder
+- **Fallback**: Enhanced datagen JSON-based registration for compatibility  
+- **Backup**: BiomeModifications API for guaranteed functionality
+- **No Single Point of Failure**: Always works regardless of which layer succeeds
+
+### 🏗️ **Professional Architecture (BiomesOPlenty-Inspired)**
+- **Centralized Biome Registry**: Professional biome management following industry standards
+- **Advanced Biome Builder**: Sophisticated climate parameter mapping for optimal placement
+- **Modular Design**: Clean separation of concerns with extensible architecture
+- **Multiple Biome Variants**: Three distinct biomes with intelligent rarity distribution
 
 ### 🎯 Core Features
 - **Authentic Recreation**: Faithful restoration of the original Modified Jungle Edge biome
@@ -51,11 +76,10 @@ The **Restored Jungle Edge** mod recreates the iconic **Modified Jungle Edge** b
 
 ### Requirements
 - **Minecraft**: 1.21.4
-- **Fabric Loader**: 0.16.5 or higher
+- **Fabric Loader**: 0.16.9 or higher
 - **Fabric API**: 0.119.2+1.21.4 or higher
-
-### Optional Dependencies
-- **ModMenu**: 13.0.0+ (for in-game configuration GUI)
+- **TerraBlender**: 4.3.0.2 or higher (required for optimal biome placement)
+- **ModMenu**: 13.0.0+ 
 
 ### Installation Steps
 
@@ -65,11 +89,14 @@ The **Restored Jungle Edge** mod recreates the iconic **Modified Jungle Edge** b
 
 2. **Download Required Mods**
    - [Fabric API](https://modrinth.com/mod/fabric-api)
-   - [ModMenu](https://modrinth.com/mod/modmenu) (optional but recommended)
+   - [ModMenu](https://modrinth.com/mod/modmenu) 
 
-3. **Install Restored Jungle Edge**
+3. **Download TerraBlender**
+   - [TerraBlender for Fabric](https://modrinth.com/mod/terrablender) (required for optimal biome placement)
+
+4. **Install Restored Jungle Edge**
    - Download the latest release from [Releases](https://github.com/bvhfve/restored-jungle-edge/releases)
-   - Place the `.jar` file in your `.minecraft/mods` folder
+   - Place all `.jar` files in your `.minecraft/mods` folder
 
 4. **Launch Minecraft**
    - Select the Fabric profile
@@ -137,7 +164,24 @@ The mod works perfectly with default settings, but you can customize it to your 
 
 ## 🗺️ Finding the Biome
 
-### Locating Modified Jungle Edge
+### 🎯 **Primary Methods (v1.0.7+) - Locate Commands**
+
+#### **All Three Biome Variants:**
+```bash
+# Primary biome - Standard rarity
+/locate biome restoredjungleedge:modified_jungle_edge
+
+# Hills variant - Elevated terrain (50% rarity)
+/locate biome restoredjungleedge:modified_jungle_edge_hills
+
+# Plateau variant - Flat elevated areas (33% rarity)
+/locate biome restoredjungleedge:modified_jungle_edge_plateau
+```
+Use the standard Minecraft locate commands to find any of the three biome variants! This works thanks to our professional TerraBlender integration following BiomesOPlenty patterns.
+
+### 🔍 **Alternative Methods**
+
+#### Locating Modified Jungle Edge
 
 **Command**: `/locate biome restoredjungleedge:modified_jungle_edge`
 
@@ -268,7 +312,20 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-## 🙏 Acknowledgments
+## 🙏 Acknowledgments & Special Thanks
+
+### **Special Thanks**
+
+#### **Biomes O' Plenty**
+Special thanks to the [Biomes O' Plenty](https://github.com/Glitchfiend/BiomesOPlenty) team for their excellent mod architecture and professional patterns. This mod's architecture was heavily inspired by BiomesOPlenty's industry-standard approach to biome registration, TerraBlender integration, and modular design. Their codebase served as an invaluable reference for implementing professional-quality biome mods.
+
+#### **Misode's Biome Generator**
+Huge appreciation to [Misode](https://misode.github.io/worldgen/biome/) for their incredible biome generator tool. This web-based tool was instrumental in resolving JSON formatting errors and ensuring our biome definitions follow the correct Minecraft data format. The generator's validation and examples helped create properly structured biome JSON files that work seamlessly with Minecraft's world generation system.
+
+#### **TerraBlender**
+Thanks to the [TerraBlender](https://github.com/Glitchfiend/TerraBlender) team for creating the industry-standard biome integration API that makes professional biome placement possible.
+
+### **General Acknowledgments**
 
 - **Mojang Studios** - For creating Minecraft and the original Modified Jungle Edge biome
 - **FabricMC Team** - For the excellent modding framework

@@ -1,6 +1,6 @@
 package com.bvhfve.restoredjungleedge.config;
 
-import com.bvhfve.restoredjungleedge.RestoredJungleEdge;
+import com.bvhfve.restoredjungleedge.RestoredJungleEdgeClean;
 
 /**
  * Helper class for accessing configuration values safely
@@ -99,16 +99,16 @@ public class ConfigHelper {
      * Log current configuration values for debugging
      */
     public static void logConfiguration() {
-        RestoredJungleEdge.LOGGER.info("=== Restored Jungle Edge Configuration ===");
-        RestoredJungleEdge.LOGGER.info("Biome Rarity: {}", getBiomeRarity());
-        RestoredJungleEdge.LOGGER.info("Trees per chunk: {}-{}", getMinTreesPerChunk(), getMaxTreesPerChunk());
-        RestoredJungleEdge.LOGGER.info("Vegetation Density: {}", getVegetationDensity());
-        RestoredJungleEdge.LOGGER.info("Mega Tree Chance: {}%", (int)(getMegaJungleTreeChance() * 100));
-        RestoredJungleEdge.LOGGER.info("Vine Growth Chance: {}%", (int)(getVineGrowthChance() * 100));
-        RestoredJungleEdge.LOGGER.info("Ocelots Enabled: {}, Weight: {}", 
+        RestoredJungleEdgeClean.LOGGER.info("=== Restored Jungle Edge Configuration ===");
+        RestoredJungleEdgeClean.LOGGER.info("Biome Rarity: {}", getBiomeRarity());
+        RestoredJungleEdgeClean.LOGGER.info("Trees per chunk: {}-{}", getMinTreesPerChunk(), getMaxTreesPerChunk());
+        RestoredJungleEdgeClean.LOGGER.info("Vegetation Density: {}", getVegetationDensity());
+        RestoredJungleEdgeClean.LOGGER.info("Mega Tree Chance: {}%", (int)(getMegaJungleTreeChance() * 100));
+        RestoredJungleEdgeClean.LOGGER.info("Vine Growth Chance: {}%", (int)(getVineGrowthChance() * 100));
+        RestoredJungleEdgeClean.LOGGER.info("Ocelots Enabled: {}, Weight: {}", 
             ConfigManager.getMobSpawning().enableOcelots, getOcelotSpawnWeight());
-        RestoredJungleEdge.LOGGER.info("Parrots Enabled: {}, Weight: {}", 
+        RestoredJungleEdgeClean.LOGGER.info("Parrots Enabled: {}, Weight: {}", 
             ConfigManager.getMobSpawning().enableParrots, getParrotSpawnWeight());
-        RestoredJungleEdge.LOGGER.info("==========================================");
+        RestoredJungleEdgeClean.LOGGER.info("==========================================");
     }
 }

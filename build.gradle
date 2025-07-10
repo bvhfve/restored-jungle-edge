@@ -2,21 +2,27 @@ plugins {
 	id 'fabric-loom' version '1.10-SNAPSHOT'
 }
 
-version = "1.0.5"
+version = "1.0.7"
 group = "com.bvhfve"
 
 repositories {
     mavenCentral()
     maven { url = "https://maven.fabricmc.net/" }
+	maven { url = "https://maven.minecraftforge.net/" } // For TerraBlender
 	maven { url = "https://maven.shedaniel.me/" }
 	maven { url = "https://maven.terraformersmc.com/" }
+	maven { url = "https://jitpack.io" } // For TerraBlender
 }
 
 dependencies {
     minecraft("com.mojang:minecraft:1.21.4")
     mappings("net.fabricmc:yarn:1.21.4+build.8") // Dùng Yarn mappings thay vì Mojang mappings
-    modImplementation("net.fabricmc:fabric-loader:0.16.5") // Cập nhật phiên bản Fabric Loader
+    modImplementation("net.fabricmc:fabric-loader:0.16.9") // Cập nhật phiên bản Fabric Loader
     modImplementation("net.fabricmc.fabric-api:fabric-api:0.119.2+1.21.4")
+    
+    // TerraBlender dependency for biome registration
+    modImplementation("com.github.glitchfiend:TerraBlender-fabric:1.21.4-4.3.0.2")
+    
 	// Config - using simple in-memory configuration
 	// Add Mod Menu dependency (optional)
     modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}")

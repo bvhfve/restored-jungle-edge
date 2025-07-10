@@ -26,14 +26,22 @@ public class ModBiomes {
     
     /**
      * Bootstrap method for datagen biome registration
-     * NOTE: Currently disabled - using Fabric BiomeModifications API instead
+     * Re-enabled with safe fallback approach
      */
     public static void bootstrap(net.minecraft.registry.Registerable<Biome> biomeRegisterable) {
-        RestoredJungleEdgeClean.LOGGER.info("Biome registration through datagen disabled - using Fabric API approach");
+        RestoredJungleEdgeClean.LOGGER.info("Attempting safe biome registration for Modified Jungle Edge");
         
-        // No longer registering biomes through datagen to avoid JSON parsing issues
-        // The mod functionality is provided through Fabric BiomeModifications API
-        // This approach is more reliable and compatible with other mods
+        try {
+            // Create a simple, safe biome that should not cause parsing issues
+            Biome modifiedJungleEdge = createSimpleModifiedJungleEdge();
+            biomeRegisterable.register(RestoredJungleEdgeClean.MODIFIED_JUNGLE_EDGE, modifiedJungleEdge);
+            
+            RestoredJungleEdgeClean.LOGGER.info("Successfully registered Modified Jungle Edge biome - now locatable with /locate biome");
+            
+        } catch (Exception e) {
+            RestoredJungleEdgeClean.LOGGER.error("Failed to register biome, falling back to API-only approach: {}", e.getMessage());
+            // Don't throw the exception - let the mod continue with API-only functionality
+        }
     }
     
     /**
