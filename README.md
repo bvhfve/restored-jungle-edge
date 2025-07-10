@@ -4,7 +4,7 @@
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.9+-blue.svg)](https://fabricmc.net/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.7-orange.svg)](https://github.com/bvhfve/restored-jungle-edge/releases)
-[![TerraBlender](https://img.shields.io/badge/TerraBlender-4.1.0+-green.svg)](https://github.com/Glitchfiend/TerraBlender)
+[![TerraBlender](https://img.shields.io/badge/TerraBlender-4.3.0.2+-green.svg)](https://github.com/Glitchfiend/TerraBlender)
 
 **Restore the beloved Modified Jungle Edge biome with professional-grade TerraBlender integration!**
 
@@ -52,12 +52,12 @@ The **Restored Jungle Edge** mod recreates the iconic **Modified Jungle Edge** b
 
 ### 🎯 Core Features
 - **Authentic Recreation**: Faithful restoration of the original Modified Jungle Edge biome
-- **Configurable Generation**: Adjust rarity, tree density, and vegetation to your liking
+- **Configurable Generation (COMING SOON!)**: Adjust rarity, tree density, and vegetation to your liking
 - **Modern Compatibility**: Built for Minecraft 1.21.4 with Fabric
 - **Performance Optimized**: Lightweight implementation with minimal impact
 - **Modpack Friendly**: Easy integration with other biome and world generation mods
 
-### 🔧 Customization Options
+### 🔧 Customization Options (COMING SOON!)
 - **Biome Rarity**: Control how often the biome generates (0-100)
 - **Tree Density**: Adjust minimum and maximum trees per chunk (0-10)
 - **Vegetation**: Configure grass, fern, and ground cover density (0-20)
@@ -104,7 +104,7 @@ The **Restored Jungle Edge** mod recreates the iconic **Modified Jungle Edge** b
 
 ---
 
-## ⚙️ Configuration
+## ⚙️ Configuration (COMING SOON!)
 
 ### Quick Start
 
@@ -331,33 +331,6 @@ Thanks to the [TerraBlender](https://github.com/Glitchfiend/TerraBlender) team f
 - **FabricMC Team** - For the excellent modding framework
 - **Minecraft Community** - For keeping the memory of removed features alive
 - **Contributors** - Everyone who helps improve this mod
-
----
-
-## 📞 Support & Links
-
-### Get Help
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/bvhfve/restored-jungle-edge/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/bvhfve/restored-jungle-edge/discussions)
-- 📖 **Documentation**: [Configuration Guide](CONFIGURATION.md)
-
-### Download Links
-- 📦 **Modrinth**: [Restored Jungle Edge](https://modrinth.com/mod/restored-jungle-edge)
-- 📦 **CurseForge**: [Restored Jungle Edge](https://curseforge.com/minecraft/mc-mods/restored-jungle-edge)
-- 📦 **GitHub Releases**: [Latest Release](https://github.com/bvhfve/restored-jungle-edge/releases/latest)
-
-### Social
-- 🐦 **Twitter**: [@bvhfve](https://twitter.com/bvhfve)
-- 💬 **Discord**: Join our [Discord Server](https://discord.gg/restored-jungle-edge)
-
----
-
-## 📊 Statistics
-
-- **Downloads**: ![Downloads](https://img.shields.io/github/downloads/bvhfve/restored-jungle-edge/total)
-- **Stars**: ![Stars](https://img.shields.io/github/stars/bvhfve/restored-jungle-edge)
-- **Issues**: ![Issues](https://img.shields.io/github/issues/bvhfve/restored-jungle-edge)
-- **Last Updated**: ![Last Commit](https://img.shields.io/github/last-commit/bvhfve/restored-jungle-edge)
 
 ---
 
