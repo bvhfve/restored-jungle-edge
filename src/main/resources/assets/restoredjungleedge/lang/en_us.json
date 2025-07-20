@@ -1,0 +1,62 @@
+{
+  "text.autoconfig.restoredjungleedge.title": "Restored Jungle Edge Configuration",
+  "text.autoconfig.restoredjungleedge.category.biome_generation": "Biome Generation",
+  "text.autoconfig.restoredjungleedge.category.biome_features": "Biome Features",
+  "text.autoconfig.restoredjungleedge.category.mob_spawning": "Mob Spawning",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.biomeRarity": "Biome Rarity",
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.biomeRarity.@Tooltip": "Controls how rare the Modified Jungle Edge biome is (0-100). Lower values make it rarer.",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.temperatureVariance": "Temperature Variance",
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.temperatureVariance.@Tooltip": "Adjusts the temperature range where the biome can spawn. Higher values allow more flexible conditions.",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.humidityVariance": "Humidity Variance",
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.humidityVariance.@Tooltip": "Adjusts the humidity range where the biome can spawn. Higher values allow more flexible conditions.",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.enableInExistingWorlds": "Enable in Existing Worlds",
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.enableInExistingWorlds.@Tooltip": "Whether to generate the biome in already explored chunks. May cause terrain inconsistencies.",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.replaceJungleEdge": "Replace Jungle Edge",
+  "text.autoconfig.restoredjungleedge.option.biomeGeneration.replaceJungleEdge.@Tooltip": "Replace existing Jungle Edge biomes with Modified Jungle Edge. This change is permanent!",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.maxTreesPerChunk": "Max Trees Per Chunk",
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.maxTreesPerChunk.@Tooltip": "Maximum number of trees that can spawn per chunk (0-10).",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.minTreesPerChunk": "Min Trees Per Chunk",
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.minTreesPerChunk.@Tooltip": "Minimum number of trees that spawn per chunk (0-10).",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.megaJungleTreeChance": "Mega Tree Chance",
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.megaJungleTreeChance.@Tooltip": "Percentage chance for large 2x2 jungle trees to spawn (0-100%).",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.vineGrowthChance": "Vine Growth Chance",
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.vineGrowthChance.@Tooltip": "Percentage chance for vines to grow on trees (0-100%).",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.vegetationDensity": "Vegetation Density",
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.vegetationDensity.@Tooltip": "Number of vegetation patches per chunk. Higher values create denser ground cover.",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.enableCocoaBeans": "Enable Cocoa Beans",
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.enableCocoaBeans.@Tooltip": "Whether cocoa beans can grow on jungle trees in this biome.",
+  
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.enableMelonPatches": "Enable Melon Patches",
+  "text.autoconfig.restoredjungleedge.option.biomeFeatures.enableMelonPatches.@Tooltip": "Whether melon patches can spawn in this biome.",
+  
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.enableOcelots": "Enable Ocelots",
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.enableOcelots.@Tooltip": "Whether ocelots can spawn in this biome.",
+  
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.enableParrots": "Enable Parrots",
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.enableParrots.@Tooltip": "Whether parrots can spawn in this biome.",
+  
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.ocelotSpawnWeight": "Ocelot Spawn Weight",
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.ocelotSpawnWeight.@Tooltip": "Relative spawn weight for ocelots. Higher values mean more frequent spawns.",
+  
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.parrotSpawnWeight": "Parrot Spawn Weight",
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.parrotSpawnWeight.@Tooltip": "Relative spawn weight for parrots. Higher values mean more frequent spawns.",
+  
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.hostileMobSpawnRate": "Hostile Mob Rate",
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.hostileMobSpawnRate.@Tooltip": "Multiplier for hostile mob spawn rates (50-150%). 100% is normal rate.",
+  
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.passiveMobSpawnRate": "Passive Mob Rate",
+  "text.autoconfig.restoredjungleedge.option.mobSpawning.passiveMobSpawnRate.@Tooltip": "Multiplier for passive mob spawn rates (50-150%). 100% is normal rate.",
+  
+  "biome.restoredjungleedge.modified_jungle_edge": "Modified Jungle Edge"
+}

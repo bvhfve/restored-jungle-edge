@@ -1,0 +1,61 @@
+plugins {
+	id 'fabric-loom' version '1.10-SNAPSHOT'
+}
+
+version = "1.1.0"
+group = "com.bvhfve"
+
+repositories {
+    mavenCentral()
+    maven { url = "https://maven.fabricmc.net/" }
+	maven { url = "https://maven.minecraftforge.net/" } // For TerraBlender
+	maven { url = "https://maven.shedaniel.me/" }
+	maven { url = "https://maven.terraformersmc.com/" }
+	maven { url = "https://jitpack.io" } // For TerraBlender
+}
+
+dependencies {
+    minecraft("com.mojang:minecraft:1.21.4")
+    mappings("net.fabricmc:yarn:1.21.4+build.8") // Dùng Yarn mappings thay vì Mojang mappings
+    modImplementation("net.fabricmc:fabric-loader:0.16.9") // Cập nhật phiên bản Fabric Loader
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.119.2+1.21.4")
+    
+    // TerraBlender dependency for biome registration
+    modImplementation("com.github.glitchfiend:TerraBlender-fabric:1.21.4-4.3.0.2")
+    
+    // JSON configuration with Gson (included with Minecraft)
+    // Gson is already available through Minecraft dependencies
+    
+    // Add Mod Menu dependency (optional)
+    modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": inputs.properties.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+java {
+	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+	// if it is present.
+	// If you remove this line, sources will not be generated.
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+	inputs.property "archivesName", project.base.archivesName
+
+	from("LICENSE") {
+		rename { "${it}_${inputs.properties.archivesName}"}
+	}
+}

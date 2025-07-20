@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "restoredjungleedge",
+  "version": "1.1.0",
+  "name": "Restored Jungle Edge",
+  "description": "Restores the removed Modified Jungle Edge biome to Minecraft",
+  "authors": [
+    "bvhfve"
+  ],
+  "contact": {
+    "homepage": "https://github.com/bvhfve/restored-jungle-edge",
+    "sources": "https://github.com/bvhfve/restored-jungle-edge"
+  },
+  "license": "MIT",
+  "icon": "assets/restoredjungleedge/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.bvhfve.restoredjungleedge.RestoredJungleEdgeClean"
+    ],
+    "terrablender": [
+      "com.bvhfve.restoredjungleedge.terrablender.TerraBlenderIntegration"
+    ],
+    "modmenu": [
+      "com.bvhfve.restoredjungleedge.client.ModMenuIntegration"
+    ],
+    "fabric-datagen": [
+      "com.bvhfve.restoredjungleedge.datagen.ModDataGeneration"
+    ]
+  },
+  "mixins": [
+    "restoredjungleedge.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "fabric-api": ">=0.119.2",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+	"modmenu": ">=13.0.3",
+    "terrablender": ">=4.3.0.2"
+  },
+  "suggests": {
+	"cloth-config": ">=17.0.144"
+  }
+}
